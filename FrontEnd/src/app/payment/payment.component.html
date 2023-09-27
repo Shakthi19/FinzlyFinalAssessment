@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <app-header></app-header>
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>Sr No</th>
+                    <th>Confirm to Pay</th>
+                    <th>Payment ID</th>
+                    <th>CustomerID</th>
+                    <th>Payment Amount</th>
+                    <th>Invoice ID</th>
+                    <th>Payment Date</th>
+               </thead>
+               
+                <tbody>
+                    <tr *ngFor="let item of payData ;index as i">
+                        <td> {{i+1}} </td>
+                        <td><button (click)="onClick(i)">Do Payment</button></td>
+                        <td> {{item.paymentId}}  </td>
+                        <td> {{item.customerId}} </td>
+                        <td> {{item.amount}} </td>
+                        <td>{{item.invoiceId}}</td>
+                        <td> {{item.Date | date:'mediumDate'}} </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+            
+
+        </div>
+    </div>

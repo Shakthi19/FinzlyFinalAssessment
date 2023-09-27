@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <app-header></app-header>
+    <div class="row">
+        <div class="col">
+            <br>
+            <div>
+                
+                <div class="form-group float-right" style="margin-top: 10px;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" style="font-size: 1em;margin-right: 2px;">
+                            <i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" placeholder="Search"
+                            style="width: min-content;" [(ngModel)]="nameSearch">
+                       </div>
+                  </div>
+
+            </div>
+
+            
+<br>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>Sr No</th>
+                    <th>Action</th>
+                    <th>Invoice No</th>
+                    <th>CustomerID</th>
+                    <th>Due Amount</th>
+                    <th>Due Date</th>
+                    <th>Payment Status</th>
+               </thead>
+               
+                <tbody>
+                    <tr *ngFor="let item of billData | paginate: { itemsPerPage: 5, currentPage: p } ;index as i">
+                        <td> {{i+1}} </td>
+                        <td><a [routerLink]="['paymentmethod']">Start Payment</a></td>
+                        <td> {{item.invoiceId}}  </td>
+                        <td> {{item.customerId}} </td>
+                        <td> {{item.amountDue}} </td>
+                        <td> {{item.dueDate | date:'mediumDate'}} </td>
+                        <td>{{item.paymentStatus}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event" class="pull-right"></pagination-controls>
+
+        </div>
+    </div>
+
+</div>
